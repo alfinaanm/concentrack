@@ -25,7 +25,6 @@ class CustomBottomNavBar extends StatelessWidget {
           label: 'Monitoring',
         ),
         BottomNavigationBarItem(icon: Icon(Icons.lightbulb), label: 'Tips'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
       ],
     );
   }

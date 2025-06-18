@@ -6,7 +6,17 @@ class TipsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tips Meningkatkan Konsentrasi')),
+      backgroundColor: const Color(0xFFEFF3F3),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF8B98B1),
+        title: const Text('Tips Meningkatkan Konsentrasi'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [

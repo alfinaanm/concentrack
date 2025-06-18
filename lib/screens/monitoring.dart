@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:concentrack/screens/connect_device.dart';
 
 class MonitoringScreen extends StatelessWidget {
   const MonitoringScreen({super.key});
@@ -6,57 +7,93 @@ class MonitoringScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Monitoring')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Container(
-              height: 250,
-              decoration: BoxDecoration(
-                color: Colors.blue[50],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Center(
-                child: Text(
-                  'Visualisasi Brainwave Monitoring',
-                  style: TextStyle(fontSize: 18),
+      backgroundColor: const Color(0xFFEFF3F3),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF8B98B1),
+        title: const Text('Monitoring', style: TextStyle(color: Colors.white)),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ConnectDeviceScreen(),
+                  ),
+                );
+              },
+              icon: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
                 ),
+                padding: const EdgeInsets.all(6),
+                child: const Icon(Icons.bluetooth, color: Colors.black),
               ),
             ),
-            const SizedBox(height: 20),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             const Text(
-              'Status Fokus Anda',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              'Visualisasi Brainwave',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 10),
-            const LinearProgressIndicator(
-              value: 0.65,
-              backgroundColor: Colors.grey,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-              minHeight: 20,
-            ),
-            const SizedBox(height: 10),
-            const Text('65% Fokus', style: TextStyle(fontSize: 16)),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {
-                // Start monitoring
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
+            const SizedBox(height: 12),
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(16),
               ),
-              child: const Text('Mulai Monitoring'),
             ),
-            const SizedBox(height: 15),
-            OutlinedButton(
-              onPressed: () {
-                // Stop monitoring
-              },
-              style: OutlinedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  'Keterangan :',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text('Durasi', style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [Text('-'), Text('00:00:00')],
+            ),
+            const SizedBox(height: 16),
+            const Divider(thickness: 0.8),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Logika mulai monitoring
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFC5DCDC),
+                  foregroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text('Mulai monitoring'),
               ),
-              child: const Text('Hentikan Monitoring'),
             ),
           ],
         ),

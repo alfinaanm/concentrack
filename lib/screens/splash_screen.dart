@@ -66,11 +66,6 @@ class _SplashScreenState extends State<SplashScreen>
                   color: Colors.blue,
                 ),
               ),
-              const SizedBox(height: 10),
-              const Text(
-                'Monitor & Tingkatkan Fokus Anda',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
-              ),
             ],
           ),
         ),
